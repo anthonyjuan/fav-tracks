@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, BackTop } from 'antd';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import logo from './logo.svg';
@@ -52,10 +52,12 @@ class App extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
               </Header>
               <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 680 }}>
-                <h2>Welcome to Fav Tracks</h2>
-                <h3>Search your Favourite Tracks</h3>
+                <br />
                 <Route exact path="/" component={Home} />
                 <Route path="/favtrack" component={FavTracks} />
+                <BackTop>
+                  <div className="ant-back-top-inner">UP</div>
+                </BackTop>
               </Content>
             </Layout>
           </Layout>
