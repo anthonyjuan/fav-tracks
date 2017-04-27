@@ -1,0 +1,2 @@
+// SEARCH
+export const SEARCH_KEYWORD = 'SEARCH_KEYWORD';
