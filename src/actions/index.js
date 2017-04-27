@@ -1,4 +1,4 @@
-import { SEARCH_KEYWORD, ADD_TRACK, DELETE_TRACK } from './constants';
+import { SEARCH_KEYWORD, ADD_TRACK, DELETE_TRACK, EDIT_TRACK } from './constants';
 
 export const searchSuccess = value => ({
   type: SEARCH_KEYWORD,
@@ -30,4 +30,9 @@ export const addTrack = (track) => {
 export const deleteTrack = trackId => ({
   type: DELETE_TRACK,
   payload: trackId,
+});
+
+export const editTrack = track => ({
+  type: EDIT_TRACK,
+  payload: track,
 });
