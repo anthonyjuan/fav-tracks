@@ -8,9 +8,7 @@ import Home from './components/Home';
 import SearchComponent from './components/Search';
 import FavTracks from './components/FavTracks';
 
-
 const { Header, Sider, Content } = Layout;
-
 class App extends Component {
   constructor() {
     super();

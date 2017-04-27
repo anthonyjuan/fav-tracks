@@ -1,4 +1,4 @@
-import { SEARCH_KEYWORD } from './constants';
+import { SEARCH_KEYWORD, ADD_TRACK, DELETE_TRACK } from './constants';
 
 export const searchSuccess = value => ({
   type: SEARCH_KEYWORD,
@@ -12,3 +12,22 @@ export const searchTracks = keyword => (
         .then(data => dispatch(searchSuccess(data.tracks)))
     )
   );
+
+export const addTrack = (track) => {
+  const newTrack = {
+    id: track.id,
+    title: track.name,
+    artist: track.artists[0].name,
+    url: `https://play.spotify.com/track/${track.id}`,
+  };
+
+  return {
+    type: ADD_TRACK,
+    payload: newTrack,
+  };
+};
+
+export const deleteTrack = trackId => ({
+  type: DELETE_TRACK,
+  payload: trackId,
+});

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Col, Card, Button, Tooltip } from 'antd';
+import { connect } from 'react-redux';
+
+import { addTrack } from '../actions';
 
 const styles = {
   button: {
@@ -8,19 +11,25 @@ const styles = {
 };
 const text = 'add to fav!';
 
-const SearchList = ({ track }) => (
+const SearchList = ({ track, addTrack }) => (
   <Col span={6}>
     <Card style={{ width: 240 }} bodyStyle={{ padding: 0 }}>
       <div className="custom-image">
         <Tooltip placement="topLeft" title={text}>
-          <Button style={styles.button} type="primary" shape="circle" icon="plus" />
+          <Button
+            onClick={() => addTrack(track)}
+            style={styles.button}
+            type="primary"
+            shape="circle"
+            icon="plus"
+          />
         </Tooltip>
         <img alt="example" width="100%" src={track.album.images[0].url} />
       </div>
       <div className="custom-card">
         <h4>{track.name}</h4>
         <h4>{track.artists[0].name}</h4>
-        <a target="_blank" href={`https://play.spotify.com/track/${track.id}`}> Spotify Link </a>
+        <a rel="noopener noreferrer" target="_blank" href={`https://play.spotify.com/track/${track.id}`}> Spotify Link </a>
       </div>
     </Card>
     <br />
@@ -28,4 +37,8 @@ const SearchList = ({ track }) => (
   </Col>
 );
 
-export default SearchList;
+const mapDispatchToProps = dispatch => ({
+  addTrack: track => dispatch(addTrack(track)),
+});
+
+export default connect(null, mapDispatchToProps)(SearchList);
